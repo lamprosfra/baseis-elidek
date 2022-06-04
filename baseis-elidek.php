@@ -364,14 +364,14 @@
                             include 'connection-open.php';
                             if(isset($_GET['nam'])){
                             $epis=  $_GET['nam'];
-                            $date = date("yyyy-mm-dd", strtotime(now));
+                      
                             
 
                             $queryyyy = "SELECT
                             researcher.FirstName as num1, researcher.LastName as num2, project.Title as num3
                             FROM about, project ,works, researcher
                             WHERE about.SciField = '$epis' and about.ProjectID=project.ProjectID and project.ProjectID=works.ProjectID and works.ResearchID=researcher.ResearchID 
-                            and project.StartDate<=$date and project.EndDate>=$date
+                            
                             ";
 
                                 
@@ -565,6 +565,267 @@
                     </div>
                 </div>
             </div>
+
+            <section id="naw">
+            <div class="section social-proof wf-section">
+                    <div class="container grid-3">
+                        <div class="column flex-center">
+                        <section id = "now">
+                            <h4 class="_10-margin">Εισαγωγή Ερευνητή</h4>
+                        </div>
+                    </div>
+                    <div class="w-form">
+                        <form action="#naw" name="email-form-3" data-name="Email Form 3" method="get"><label
+                                for="name-5" class="field-label-7">Όνομα</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter1" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Επίθετο</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter2" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Ημερομηνία γέννησης</label>
+                                <input type="date"  class="w-input" maxlength="256" name="enter3" placeholder=""  id="nam" />
+                                <label for="name-5" class="field-label-7">Οργανισμός που εργάζεται</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter4" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Φύλο</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter5" placeholder=""  id="nam" />
+                                
+                                
+                                <input type="submit" value="Submit" data-wait="Please wait..."
+                                class="submit-button w-button" name="all"/></form>
+                        <div class="w-form-done">
+                            <div>Thank you! Your submission has been received!</div>
+                        </div>
+                        <div class="w-form-fail">
+                            <div>Oops! Something went wrong while submitting the form.</div>
+                        </div>
+                    </div>
+                    <div class="div-block-6">
+
+<h4>
+<?php
+                include 'connection-open.php';
+
+                if(!isset($_GET['enter5'])){
+
+                   $value['enter5'] =null;
+                }
+
+                if(isset($_GET['all'])){
+                    $name = $_GET['enter1'];
+                    $surname = $_GET['enter2'];
+                    $birth = $_GET['enter3'];
+                    $orgaaa = $_GET['enter4'];
+                    $sex=$_GET['enter5'];
+                    
+
+
+                    
+                        $query = "INSERT INTO researcher(FirstName, LastName, DateBirth, Sex, NameOrg)
+                                VALUES ('$name', '$surname', $birth,'$sex','$orgaaa')";
+                        if (mysqli_query($conn, $query)) {
+                            //echo "New record created successfully";
+                            exit();
+                        }
+                        else{
+                            echo "Error while creating record: <br>" . mysqli_error($conn) . "<br>";
+                        }
+                    }
+                
+                
+            ?>
+                                  </h4>              
+                    </div>
+                    <div class="blue-line bottom">
+
+
+                    
+                    </div>
+                    <div class="blue-line"></div>
+                </div>
+            
+
+                <section id="new">
+            <div class="section social-proof wf-section">
+                    <div class="container grid-3">
+                        <div class="column flex-center">
+                        <section id = "now">
+                            <h4 class="_10-margin">Εισαγωγή Οργανισμού</h4>
+                        </div>
+                    </div>
+                    <div class="w-form">
+                        <form action="#new" name="email-form-3" data-name="Email Form 3" method="get"><label
+                                for="name-5" class="field-label-7">Οργανισμός</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter11" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Συντομογραφία</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter21" placeholder=""  id="nam" />
+                                <label for="name-5" class="field-label-7">ΤΚ</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter31" placeholder=""  id="nam" />
+                                <label for="name-5" class="field-label-7">Δρόμος</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter41" placeholder=""  id="nam" />
+                                <label for="name-5" class="field-label-7">Πόλη</label>
+                                <input type="text"  class="w-input" maxlength="256" name="enter51" placeholder=""  id="nam" />
+                                
+                                
+                                <input type="submit" value="Submit" data-wait="Please wait..."
+                                class="submit-button w-button" name="all11"/></form>
+                        <div class="w-form-done">
+                            <div>Thank you! Your submission has been received!</div>
+                        </div>
+                        <div class="w-form-fail">
+                            <div>Oops! Something went wrong while submitting the form.</div>
+                        </div>
+                    </div>
+                    <div class="div-block-6">
+
+<h4>
+<?php
+                include 'connection-open.php';
+
+                if(!isset($_GET['enter21'])){
+
+                   $value['enter21'] =null;
+                }
+
+
+                if(!isset($_GET['enter31'])){
+
+                    $value['enter31'] =null;
+                 }
+
+                 if(!isset($_GET['enter41'])){
+
+                    $value['enter41'] =null;
+                 }
+
+                 if(!isset($_GET['enter51'])){
+
+                    $value['enter51'] =null;
+                 }
+
+
+                if(isset($_GET['all11'])){
+                    $orgname = $_GET['enter11'];
+                    $sintomo = $_GET['enter21'];
+                    $tk = $_GET['enter31'];
+                    $dromos = $_GET['enter41'];
+                    $poli=$_GET['enter51'];
+                    
+
+
+                    
+                        $query = "INSERT INTO organization (NameOrg, ShortName, TK, Street, City)
+                                VALUES ('$orgname', '$sintomo', $tk,'$dromos','$poli')";
+                        if (mysqli_query($conn, $query)) {
+                            //echo "New record created successfully";
+                            exit();
+                        }
+                        else{
+                            echo "Error while creating record: <br>" . mysqli_error($conn) . "<br>";
+                        }
+                    }
+                
+                
+            ?>
+                                  </h4>              
+                    </div>
+                    <div class="blue-line bottom">
+
+
+                    
+                    </div>
+                    <div class="blue-line"></div>
+                </div>
+
+
+                <section id="nqw">
+            <div class="section social-proof wf-section">
+                    <div class="container grid-3">
+                        <div class="column flex-center">
+                        <section id = "now">
+                            <h4 class="_10-margin">Εισαγωγή Έργου</h4>
+                        </div>
+                    </div>
+                    <div class="w-form">
+                        <form action="#nqw" name="email-form-3" data-name="Email Form 3" method="get"><label
+                                for="name-5" class="field-label-7">Τίτλος</label>
+                                <input type="text"  class="w-input" maxlength="256" name="en1" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Λεφτά χρηματοδότησης</label>
+                                <input type="number"  class="w-input" maxlength="256" name="en2" placeholder=""  id="nam" required />
+                                <label for="name-5" class="field-label-7">Ημερομηνία έναρξης</label>
+                                <input type="date"  class="w-input" maxlength="256" name="en3" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Ημερομηνία λήξης</label>
+                                <input type="date"  class="w-input" maxlength="256" name="en4" placeholder=""  id="nam"required />
+                                <label for="name-5" class="field-label-7">Περίληψη</label>
+                                <input type="text"  class="w-input" maxlength="256" name="en5" placeholder=""  id="nam"required />
+                                <label for="name-5" class="field-label-7">Researcher ID</label>
+                                <input type="number"  class="w-input" maxlength="256" name="en6" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Όνομα οργανισμού</label>
+                                <input type="text"  class="w-input" maxlength="256" name="en7" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Manager ID</label>
+                                <input type="number"  class="w-input" maxlength="256" name="en8" placeholder=""  id="nam" required/>
+                                <label for="name-5" class="field-label-7">Πρόγραμμα ΕΛΙΔΕΚ</label>
+                                <input type="text"  class="w-input" maxlength="256" name="en9" placeholder=""  id="nam" required/>
+                                
+                                
+                                <input type="submit" value="Submit" data-wait="Please wait..."
+                                class="submit-button w-button" name="all11"/></form>
+                        <div class="w-form-done">
+                            <div>Thank you! Your submission has been received!</div>
+                        </div>
+                        <div class="w-form-fail">
+                            <div>Oops! Something went wrong while submitting the form.</div>
+                        </div>
+                    </div>
+                    <div class="div-block-6">
+
+<h4>
+<?php
+                include 'connection-open.php';
+
+               
+    
+    
+
+                if(isset($_GET['all11'])){
+                    $on1 = $_GET['en1'];
+                    $on2 = $_GET['en2'];
+                    $on3 = $_GET['en3'];
+                    $on4 = $_GET['en4'];
+                    $on4 = $_GET['en5'];
+                    $on6 = $_GET['en6'];
+                    $on7 = $_GET['en7'];
+                    $on8 = $_GET['en8'];
+                    $on9 = $_GET['en9'];
+                    
+                    
+
+
+                    
+                        $query = "INSERT into Project (Title,StartDate, EndDate,Summary, ResearchID,NameOrg,ManagerID,Prog)
+                        values('$on1','$on3','$on4','$on5','$on6','$on7','$on8','$on9');";
+                        if (mysqli_query($conn, $query)) {
+                            //echo "New record created successfully";
+                            exit();
+                        }
+                        else{
+                            echo "Error while creating record: <br>" . mysqli_error($conn) . "<br>";
+                        }
+                    }
+                
+                
+            ?>
+                                  </h4>              
+                    </div>
+                    <div class="blue-line bottom">
+
+
+                    
+                    </div>
+                    <div class="blue-line"></div>
+                </div>
+            
+
+
+
+
             <script
                 src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6288b36eede9502ea4089b53"
                 type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
